@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marathi Story Generator</title>
+    <style>
+        /* Styling code remains the same */
+         /* Body background with an image and gradient overlay */
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(rgba(21, 20, 20, 0.8), rgba(15, 15, 15, 0.8)),
+                        url("/static/images/laptop.webp"); /* Replace with your preferred image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            background-blend-mode: overlay;
+            color: #333;
+            padding: 20px;
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Title styling outside the container with white color */
+        .main-title {
+            font-size: 3.5rem; /* Larger font size for the title */
+            font-weight: bold;
+            color: #ffffff; /* White color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Subtitle styling below the title with white color */
+        .sub-title {
+            font-size: 1.4rem;
+            color: #ffffff; /* White color */
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        /* Container with a white background, soft shadow, and smooth effect */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px; /* Reduced container width */
+            background-color: #ffffff; /* White background for readability */
+            border-radius: 20px;
+            padding: 60px 80px; /* Adjusted padding for smaller box */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+            transition: all 0.3s ease; /* Smooth hover effect */
+        }
+
+        /* Container hover effect */
+        .container:hover {
+            transform: translateY(-10px); /* Subtle upward movement */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+        }
+
+        /* Input field styling with smaller size */
+        .prompt-box input[type="text"] {
+            width: 100%;
+            padding: 0.8em; /* Reduced padding */
+            font-size: 1.1rem; /* Slightly smaller font size */
+            color: #333;
+            border: 2px solid #ff4e50; /* Thicker border for visibility */
+            border-radius: 12px;
+            background: #f9f9f9;
+            outline: none;
+            transition: border 0.3s ease, box-shadow 0.3s ease; /* Adding box-shadow transition */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.2em; /* Adjusted spacing */
+        }
+
+        .prompt-box input[type="text"]:focus {
+            border-color: #d14041; /* Darker border on focus */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Darker shadow on focus */
+        }
+
+        /* Button styling with smaller size */
+        .prompt-box button {
+            background: #ff4e50;
+            color: #ffffff;
+            padding: 1em;
+            font-size: 1.1rem; /* Smaller font size */
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .prompt-box button:hover {
+            background: #d14041;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+        }
+
+        /* Story output box styling */
+        .story-output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffecec;
+            border-radius: 12px;
+            color: #333;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 600px) {
+            .container {
+                max-width: 90%;
+                padding: 40px;
+            }
+            .main-title {
+                font-size: 3rem; /* Slightly smaller font for mobile */
+            }
+            .sub-title {
+                font-size: 1.2rem; /* Adjusted subtitle font size */
+            }
+            .prompt-box button {
+                font-size: 1.2rem; /* Adjusted button font size */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Title with white color -->
+    <div class="main-title">
+        Marathi Story Generator
+    </div>
+
+    <!-- Subtitle with white color -->
+    <div class="sub-title">
+        Create your own stories with the StoryTeller.
+    </div>
+
+    <!-- Container for the AI Story Generator form -->
+    <div class="container">
+        <div class="prompt-box">
+            <input type="text" id="prompt" placeholder="What do you want to write a story about?">
+            <button onclick="generateStory()">Generate Story</button>
+        </div>
+
+        <!-- Story output box, hidden initially -->
+        <div id="storyOutput" class="story-output" style="display: none; width: 100%; height: 200px; padding: 20px; border: 2px solid #ccc; font-size: 18px; overflow-y: auto;"></div>
+    </div>
+        
+    <script>
+        async function generateStory() {
+            const prompt = document.getElementById("prompt").value;
+            const storyOutput = document.getElementById("storyOutput");
+    
+            if (prompt.trim() === "") {
+                storyOutput.style.display = "none";
+                alert("Please enter a prompt to generate a story.");
+                return;
+            }
+    
+            // Show "Generating story..." message
+            storyOutput.textContent = "Generating story...";
+            storyOutput.style.display = "block";
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/generate', {  // Flask usually runs on port 5000
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt: prompt })  // Send the prompt to the Flask backend
+                });
+    
+                const result = await response.json();
+                if (result.story) {
+                    storyOutput.textContent = result.story;  // Replace with the generated story
+                } else {
+                    storyOutput.style.display = "none";
+                    alert(result.error || "An error occurred. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error generating story:", error);
+                alert("An error occurred. Please try again.");
+            }
+        }
+    </script>
+    
+     
+
+</body>
+</html>

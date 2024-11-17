@@ -1,0 +1,354 @@
+/* start of navbar */
+.navbar{
+    background-color: rgb(111, 11, 48);
+    padding: 10px 0px;
+}
+.nav-item{
+    padding: 0% 20px;
+}
+.nav-item:hover .nav-link{
+    color:rgb(184, 206, 22);
+}
+.navbar-brand i{
+    font-size:x-large;
+}
+/* end of navbar*/
+body {
+    position: relative; /* Ensure the body is the reference for absolute positioning */
+  }
+
+/* start chatbot*/
+.chatbot-icon{
+    position: fixed;
+    padding: 450px 1190px;
+    margin: 50px; 
+}
+.chatbot-icon i{
+    font-size: 90px;
+    color: #adb515;
+    
+}
+.chatbot-icon i:hover{
+    color: rgb(65, 65, 194);
+    transition:0.5s;
+
+}
+.carousel-item:not(.bg1) .chatbot-icon {
+    position: static; 
+}
+
+/*end chatbot*/
+
+
+/* start of  carousel */
+
+.bg1{
+    background:linear-gradient(rgba(10, 10, 10, 0.5),rgba(10,10,10, 0.5)),url("img6.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:calc(95vh);
+    position: relative;
+}
+.bg2{
+    background:linear-gradient(rgba(10, 10, 10, 0.5),rgba(10, 10, 10, 0.5)),url("father.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:calc(95vh);
+    position: relative;
+}
+.bg3{
+    background:linear-gradient(rgba(10, 10, 10, 0.5),rgba(10, 10, 10, 0.5)),url("img4.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:calc(95vh);
+    position: relative;
+}
+.bg4{
+    background:linear-gradient(rgba(10, 10, 10, 0.5),rgba(10, 10, 10, 0.5)),url("gmother.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:calc(95vh);
+    position: relative;
+}
+.bg5{
+    background:linear-gradient(rgba(10, 10, 10, 0.5),rgba(10, 10, 10, 0.5)),url("openbook\ \(1\).jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:calc(9vh);
+    position: relative;
+}
+
+.mycaption{
+    color: #fff;
+    position: absolute;
+    width: 40%;
+    left: 20%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+    padding: 50px;
+    text-align: center;
+}
+@media only screen and (max-width:720px)
+ {
+    .mycaption{ width: 80%;
+        left: 50%;
+        top: 50%;
+    }
+    
+}
+.mycaption h1{
+    text-align: center;
+    font-size:x-large;
+    font-weight: bold;
+
+}
+.mycaption p{
+    font-weight:300;
+    text-align: left;
+    text-decoration: dotted;
+}
+.readmore_slider{
+    text-decoration:none;
+    color: #fff;
+    border: 1px solid #fff ;
+    padding: 10px 20px;
+    display:inline-block;
+    margin: 10px;
+}
+.readmore_slider:hover{
+    background-color: #fff;
+    color: rgb(213, 70, 14);
+}   
+/* end of  carousel */
+/* start about */
+section{
+    padding: 40px 0px;
+}
+.mainheading{
+    font-size:xx-large;
+    font-weight: 800;
+    display: block;
+    text-align: center;
+}
+.mainheading::before {
+    content:"";
+    width: 70px;
+    background-color: chocolate;
+    height: 2px;
+    margin: 14px;
+    display: inline-block;
+    
+}
+.mainheading::after {
+    content:"";
+    width: 70px;
+    background-color: chocolate;
+    height: 2px;
+    margin: 14px;
+    display: inline-block;
+    
+}
+.subheading{
+    text-align: center;
+    display:block;
+}
+.about p, li{
+    line-height: 30px; 
+    
+}
+.about ol{
+    
+   font-weight: bold;
+}
+.aboutlearnmore{
+    color:#ff9041;
+    text-decoration: none;
+    padding: 5px 10px;
+    border:1px solid #ff9041;
+    display: inline-block;
+    margin: top 20px;
+}
+.aboutlearnmore:hover{
+    color: #fff;
+    background-color: #ff9041;
+    transition: 0.5s;
+
+}
+/* end about */
+/* start cards */
+.mycard {
+    padding: 20px;
+    box-shadow: 0px 0px 30px #cecece;
+    text-align: center;
+    margin-top: 40px;
+}
+.mycard i {
+    font-size:xx-large;
+    color: brown;
+}
+.counter{
+    font-size: x-large;
+}
+.titel{
+    font-size: 30px;
+    font-weight: 700;
+    font-style: italic;
+}
+.mycard ul{
+    font-weight:600;
+
+}
+
+.mycard a{
+    text-decoration: none;
+    color: #090909;
+   
+}
+.mycard a:hover{
+    letter-spacing: 2px;
+    transition: 0.5s;
+    color: #ff9041;
+}
+
+/* end cards */
+/* help*/
+.help{
+    background-color: rgb(128, 21, 28);
+    color: #fff;
+    text-align: center;
+
+}
+.help p{
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+.help-phone{
+    font-size: 20px;
+}
+/* end help*/
+/*team*/
+.team{
+    background-color: antiquewhite;
+}
+.teamcard{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    margin: 30px;
+}
+.teamcard:hover{
+    box-shadow: 0px 0px 20px #480808;
+}
+.teamcard img{
+    border: 5px;
+}
+h3{
+    text-align: center;
+
+}
+p{
+font-size: medium;
+font-weight: 500;
+
+}
+.team i{
+     padding: 10px;
+     font-size: 20px;
+    }
+.team i:hover{
+    color: rgb(2, 2, 83);
+    cursor: pointer;
+}
+
+/*end team*/
+
+/*start contact*/
+.Contact i {
+    font: size 30px;;
+    font-weight: 900;
+    color: rgb(217, 127, 53);
+    
+}
+.Contact a{
+    text-decoration: none;
+    color: #090909;
+}
+.Contact a:hover{
+    color: blue;
+}
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #fff;
+    color: #0c0c0c;
+}
+/*end contact*/
+
+/* footer */
+.footer{
+    background-color:rgb(111, 11, 48) ;
+    color: #cecece;
+}
+.contactdetailes h3{
+    font-size: x-large;
+    font-weight: 900;
+}
+.contactdetailes h3:hover{
+    color: #ff9041;
+}
+.contactdetailes{
+    background-color:rgb(125, 19, 58) ;
+    padding: 20px;
+    text-align: center;
+}
+.quike-item .quike-link{
+text-decoration: none;
+padding: 0px;
+font-size: 17px;
+margin: 10px; ;
+text-align: left;
+color: #fff;
+}
+.quike-item :hover{
+    color:rgb(184, 206, 22)
+}
+.quikelink li{
+    text-decoration: none;
+    line-height:35px;
+    
+}
+.footerservices ul{
+    list-style-type: none;
+    padding: 0px;
+}
+.footerservices li{
+    line-height: 35px;
+}
+.footerservices i {
+    font-size:15px;
+padding:5px;
+}
+.footersoical ul{
+    list-style-type: none;
+    padding: 0px;
+    font-size: 17px;
+}
+.footersoical li{
+    line-height: 35px;
+}
+.footersoical i {
+    font-size:20px;
+    padding:10px;
+   
+}
+
+/* End footer*/
+.copyright{
+    background-color:rgb(68, 2, 27);
+}
